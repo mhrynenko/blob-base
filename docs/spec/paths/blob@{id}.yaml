@@ -1,0 +1,35 @@
+parameters:
+  - name: id
+    in: path
+    required: true
+    schema:
+      type: int
+
+paths:
+  /blobs/{id}:
+    get:
+      tags:
+        - Blobs
+      summary: Get blob
+      operationId: getBlob
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    $ref: '#/components/schemas/Blob'
+        '404':
+          description: No such blob
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    $ref: '#/components/schemas/Errors'

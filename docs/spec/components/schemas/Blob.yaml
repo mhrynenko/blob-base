@@ -1,0 +1,9 @@
+allOf:
+  - $ref: '#/components/schemas/BlobKey'
+  - type: object
+    required:
+      - attributes
+    properties:
+      attributes:
+        type: object
+        format: json.RawMessage
