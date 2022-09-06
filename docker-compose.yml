@@ -9,3 +9,7 @@ services:
       POSTGRES_PASSWORD: "pass"
     ports:
       - '5432:5432'
+
+
+#docker exec -it <id> bash
+#psql -U max -d blobDB

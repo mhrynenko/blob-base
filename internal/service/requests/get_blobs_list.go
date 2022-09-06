@@ -8,6 +8,7 @@ import (
 
 type GetBlobsListRequest struct {
 	pgdb.OffsetPageParams
+	FilterOwner []string `filter:"owner"`
 }
 
 func NewGetBlobsListRequest(r *http.Request) (GetBlobsListRequest, error) {

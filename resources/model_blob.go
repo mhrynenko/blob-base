@@ -4,11 +4,10 @@
 
 package resources
 
-import "encoding/json"
-
 type Blob struct {
 	Key
-	Attributes json.RawMessage `json:"attributes"`
+	Attributes    BlobAttributes    `json:"attributes"`
+	Relationships BlobRelationships `json:"relationships"`
 }
 type BlobResponse struct {
 	Data     Blob     `json:"data"`

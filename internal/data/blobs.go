@@ -6,15 +6,19 @@ type Blobs interface {
 	New() Blobs
 
 	NewBlob(blob Blob) (Blob, error)
-	GetBlob(blobId int64) (*Blob, error)
-	DeleteBlob(blobId int64) (*Blob, error)
+	GetBlob() (*Blob, error)
+	DeleteBlob(blobId int64) error
 
 	GetBlobs() ([]Blob, error)
 
 	Page(pageParams pgdb.OffsetPageParams) Blobs
+
+	FilterByOwner(owners ...string) Blobs
+	FilterByID(ids ...int64) Blobs
 }
 
 type Blob struct {
 	ID         int64  `db:"id" structs:"-"`
+	Owner      string `db:"owner" structs:"-"`
 	Attributes []byte `db:"attributes" structs:"-"`
 }

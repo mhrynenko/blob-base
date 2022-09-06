@@ -18,7 +18,7 @@ func (s *service) router() chi.Router {
 			handlers.CtxBlobsQ(postgres.NewBlobsTable(s.cfg.DB())),
 		),
 	)
-	r.Route("/integrations/blob-base", func(r chi.Router) {
+	r.Route("/blobs", func(r chi.Router) {
 		r.Post("/", handlers.AddBlob)
 		r.Get("/", handlers.GetBlobsList)
 		r.Route("/{id}", func(r chi.Router) {

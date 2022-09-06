@@ -3,7 +3,20 @@ allOf:
   - type: object
     required:
       - attributes
+      - relationships
     properties:
+      relationships:
+        type: object
+        required:
+          - owner
+        properties:
+          owner:
+            type: string
       attributes:
         type: object
-        format: json.RawMessage
+        required:
+          - content
+        properties:
+          content:
+            type: object
+            format: json.RawMessage

@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"encoding/json"
 	"net/http"
 
 	"blob-base/internal/data"
@@ -23,7 +22,8 @@ func AddBlob(w http.ResponseWriter, r *http.Request) {
 
 	var resultBlob data.Blob
 	newBlob := data.Blob{
-		Attributes: request.Data.Attributes,
+		Owner:      request.Data.Relationships.Owner,
+		Attributes: request.Data.Attributes.Content,
 	}
 	resultBlob, err = BlobsQ(r).NewBlob(newBlob)
 
@@ -41,8 +41,9 @@ func AddBlob(w http.ResponseWriter, r *http.Request) {
 
 func newBlobModel(blob data.Blob) resources.Blob {
 	result := resources.Blob{
-		Key:        resources.NewKeyInt64(blob.ID, resources.BLOB),
-		Attributes: json.RawMessage(blob.Attributes),
+		Key:           resources.NewKeyInt64(blob.ID, resources.BLOB),
+		Relationships: resources.BlobRelationships{Owner: blob.Owner},
+		Attributes:    resources.BlobAttributes{Content: blob.Attributes},
 	}
 
 	return result

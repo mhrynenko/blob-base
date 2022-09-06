@@ -20,7 +20,8 @@ func GetBlobsList(w http.ResponseWriter, r *http.Request) {
 	}
 
 	blobsQ := BlobsQ(r)
-	blobsQ.Page(request.OffsetPageParams)
+	applyFilters(blobsQ, request)
+
 	blobs, err := blobsQ.GetBlobs()
 	if err != nil {
 		Log(r).WithError(err).Error("failed to get blobs")
@@ -47,4 +48,16 @@ func newBlobsList(blobs []data.Blob) []resources.Blob {
 		result[i] = newBlobModel(blob)
 	}
 	return result
+}
+
+func applyFilters(q data.Blobs, request requests.GetBlobsListRequest) {
+	q.Page(request.OffsetPageParams)
+
+	//if request.FilterOwner != nil {
+	//	q.FilterByOwner(*request.FilterOwner)
+	//}
+
+	if len(request.FilterOwner) > 0 {
+		q.FilterByOwner(request.FilterOwner...)
+	}
 }

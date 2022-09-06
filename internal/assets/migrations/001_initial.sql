@@ -2,6 +2,7 @@
 
 CREATE TABLE IF NOT EXISTS blobs (
     id bigserial primary key,
+    owner text not null,
     attributes jsonb not null
 );
 
