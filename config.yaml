@@ -2,7 +2,7 @@ log:
   disable_sentry: true
 
 db:
-  url: postgres://max:pass@localhost:5432/blobDB?sslmode=disable
+  url: postgres://max:pass@localhost:5462/blobDB?sslmode=disable
 
 listener:
   addr: :8000

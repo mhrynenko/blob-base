@@ -27,5 +27,7 @@ func (s *service) router() chi.Router {
 		})
 	})
 
+	r.Post("/accounts/", handlers.CreateAccount)
+
 	return r
 }

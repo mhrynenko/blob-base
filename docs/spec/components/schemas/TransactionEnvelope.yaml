@@ -1,0 +1,18 @@
+allOf:
+  - $ref: '#/components/schemas/TransactionEnvelopeKey'
+  - type: object
+    required:
+      - attributes
+    properties:
+      attributes:
+        type: object
+        required:
+          - sourceAccount
+          - operation
+        properties:
+          sourceAccount:
+            description: account used to run the transaction
+            type: string
+          operation:
+            description: operation to be applied
+            $ref: '#/components/schemas/Operation'

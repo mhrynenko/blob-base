@@ -1,0 +1,32 @@
+post:
+  tags:
+    - Account
+  summary: Create Account
+  description: Creates account using provided account-id and signers
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - data
+            - included
+          properties:
+            data:
+              type: object
+              $ref: '#/components/schemas/CreateAccountOp'
+            included:
+              type: array
+              items:
+                type: object
+                anyOf:
+                  - $ref: '#/components/schemas/SignerData'
+  responses:
+    '201':
+      description: account created
+    '400':
+      description: invalid request
+    '409':
+      description: account already exist
+    '500':
+      description: failed to create account

@@ -1,0 +1,23 @@
+type: object
+required:
+  - destination
+  - referrer
+  - roleId
+  - signersData
+properties:
+  destination:
+    description: ID of account to be created
+    type: string
+  referrer:
+    description: ID of an another account that introduced this account into the system.
+      If account with such ID does not exist or it's Admin Account. Referrer won't be set.
+    type: string
+  roleId:
+    description: ID of the role that will be attached to an account
+    type: uint64
+  signersData:
+    description: Array of data about 'destination' account signers to be created
+    type: array
+    items:
+      $ref: '#/components/schemas/SignerData'
+

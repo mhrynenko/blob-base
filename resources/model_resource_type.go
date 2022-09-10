@@ -8,5 +8,6 @@ type ResourceType string
 
 // List of ResourceType
 const (
-	BLOB ResourceType = "blob"
+	BLOB        ResourceType = "blob"
+	TRANSACTION ResourceType = "transaction"
 )

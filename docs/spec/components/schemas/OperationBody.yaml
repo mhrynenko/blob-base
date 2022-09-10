@@ -1,0 +1,12 @@
+type: object
+required:
+  - type
+  - createAccountOp
+properties:
+  type:
+    description: CREATE_ACCOUNT
+    type: string
+  createAccountOp:
+    description: CreateAccountOp is used to create new account
+    $ref: '#/components/schemas/CreateAccountOp'
+

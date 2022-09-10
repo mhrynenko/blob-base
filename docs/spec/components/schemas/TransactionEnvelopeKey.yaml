@@ -1,0 +1,12 @@
+type: object
+required:
+  - id
+  - type
+properties:
+  id:
+    description: transactionID
+    type: string
+  type:
+    type: string
+    enum:
+      - transaction

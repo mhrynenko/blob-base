@@ -53,10 +53,6 @@ func newBlobsList(blobs []data.Blob) []resources.Blob {
 func applyFilters(q data.Blobs, request requests.GetBlobsListRequest) {
 	q.Page(request.OffsetPageParams)
 
-	//if request.FilterOwner != nil {
-	//	q.FilterByOwner(*request.FilterOwner)
-	//}
-
 	if len(request.FilterOwner) > 0 {
 		q.FilterByOwner(request.FilterOwner...)
 	}

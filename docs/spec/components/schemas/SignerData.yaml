@@ -1,0 +1,27 @@
+type: object
+required:
+  - publicKey
+  - roleId
+  - weight
+  - identity
+  - details
+properties:
+  publicKey:
+    description: public key of a signer
+    type: string
+  roleId:
+    description: id of the role that will be attached to a signer
+    type: uint64
+    example: 1
+  weight:
+    description: weight that signer will have, threshold for all SignerRequirements equals 1000
+    type: uint32
+    example: 1000
+  identity:
+    description: If there are some signers with equal identity, only one signer will be chosen 
+      (either the one with the biggest weight or the one who was the first to satisfy a threshold)
+    type: uint32
+    example: 1
+  details:
+    description: arbitrary stringified json object with details that will be attached to signer
+    type: string
